@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Validation</title>
+    <script>
+        // 1. Функція перевірки першого символу на верхній регістр
+        function upperCase(str) {
+            var firstChar = str.charAt(0);
+            if (firstChar === firstChar.toUpperCase()) {
+                console.log("String starts with uppercase character");
+            } else {
+                console.log("String does not start with uppercase character");
+            }
+        }
+
+        upperCase('regexp');
+        upperCase('RegExp');
+
+        // 2. Функція перевірки на відповідність емейлу
+        function checkEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        console.log(checkEmail("Qmail2@gmail.com"));
+
+        // 3. Регулярний вираз для пошуку в тексті патерну "dbBd"
+        var text = "cdbBdbsbz";
+        var pattern = /d(b+)d/gi;
+        console.log(text.match(pattern));
+
+        // 4. Регулярний вираз для міняння місцями двох підстрічок
+        var str = "Java Script";
+        var replaced = str.replace(/(\w+)\s(\w+)/, "$2, $1");
+        console.log(replaced);
+
+        // 5. Функція валідації номера банківської карти
+        function validateCreditCardNumber(cardNumber) {
+            var regex = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+            return regex.test(cardNumber);
+        }
+
+        console.log(validateCreditCardNumber('9999-9999-9999-9999'));
+
+        // 6. Функція перевірки на відповідність емейлу
+        function checkEmailFormat(email) {
+            var emailRegex = /^[A-Za-z0-9]+(?:[._-][A-Za-z0-9]+)*@[A-Za-z0-9]+(?:[.-][A-Za-z0-9]+)*\.[A-Za-z]{2,}$/;
+            return emailRegex.test(email);
+        }
+
+        console.log(checkEmailFormat('my_mail@gmail.com'));
+        console.log(checkEmailFormat('#my_mail@gmail.com'));
+        console.log(checkEmailFormat('my_ma--il@gmail.com'));
+
+        // 7. Функція перевірки правильності логіна
+        function checkLogin(login) {
+            var loginRegex = /^[a-zA-Z][a-zA-Z0-9]{1,9}$/;
+            var numbers = login.match(/\d+(\.\d+)?/g);
+            console.log(numbers ? numbers.join(', ') : 'No numbers found');
+            return loginRegex.test(login);
+        }
+
+        console.log(checkLogin('ee1.1ret3'));
+        console.log(checkLogin('ee1*1ret3'));
+    </script>
+</head>
+<body>
+    <h1>Open console!</h1>
+</body>
+</html>
